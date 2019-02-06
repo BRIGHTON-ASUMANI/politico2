@@ -2,7 +2,7 @@ from flask import Flask
 from app.api.version1 import v1
 from config import config_options
 
-def create_app('development'):
+def create_app(config_name):
 
     app = Flask(__name__)
 
