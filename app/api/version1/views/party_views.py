@@ -14,6 +14,7 @@ def create_parties():
         'hqAddress': party_hq,
         'logoUrl': party_logo
     }
+    
     parties.append(party)
     c_party = Party.create_party(party)
     return make_response(jsonify({
