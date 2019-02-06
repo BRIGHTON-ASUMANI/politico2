@@ -9,14 +9,14 @@ def create_parties():
     party_hq = ['hqAddress']
     party_logo = ['logoUrl']
 
-    party = {
+    new_party = {
         'name': party_name,
         'hqAddress': party_hq,
         'logoUrl': party_logo
     }
     
     parties.append(party)
-    c_party = Party.create_party(party)
+    Party.create_party(new_party)
     return make_response(jsonify({
         'message': 'Party added successfully'
     }), 200)

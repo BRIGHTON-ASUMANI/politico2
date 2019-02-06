@@ -10,6 +10,5 @@ class Party:
         return parties
 
     @classmethod
-    def create_party(cls, party):
-        parties.append(party)
-        return parties
+    def create_party(cls, new_party):
+        pass
