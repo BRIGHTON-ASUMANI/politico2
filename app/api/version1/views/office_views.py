@@ -21,5 +21,5 @@ def create_offices():
 @v1.route('/offices', methods=['GET'])
 def get_all_offices():
     
-    return 'success'
+    return Office.get_office()
 
