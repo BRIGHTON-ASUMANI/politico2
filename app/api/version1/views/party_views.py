@@ -9,16 +9,16 @@ def create_party():
     method for creating a party
     '''
     party = request.get_json()
-    name = party['name']
-    hqAddress = party['hqAddress']
-    logoUrl = party['logoUrl']
+    name = party.get('name')
+    hqAddress = party.get('hqAddress')
+    logoUrl = party.get('logoUrl')
 
-
-    response = Party().create_party(name, hqAddress, logoUrl)
-    return make_response(jsonify(response = {
+    return make_response(jsonify({
         'message': 'Party added successfully',
         'status': 201,
-        'data': response
+        'data': [{
+            "name":name
+        }]
     }), 201)
 
 @v1.route('/parties', methods=['GET'])
