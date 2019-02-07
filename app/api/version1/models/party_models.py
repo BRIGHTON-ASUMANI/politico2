@@ -1,7 +1,7 @@
 parties =[]
 
 class Party():
-   '''
+    '''
     Class that generates new instances of a office
     '''
     def __init__(self):
@@ -16,7 +16,7 @@ class Party():
     def create_party(self, name, hqAddress, logoUrl):
         '''
          Args:
-            name: New party first name.
+            name: New party name.
             hqAddress : New party hqAddress.
             logoUrl: New party logoUrl
         '''
@@ -25,7 +25,7 @@ class Party():
             "party_id": len(self.all_parties)+1,
             "name": name,
             "hqAddress": hqAddress,
-            "logoUrl": logoUrl,
+            "logoUrl": logoUrl
         }
 
         self.all_parties.append(new_party)
