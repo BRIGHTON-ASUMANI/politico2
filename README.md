@@ -5,6 +5,7 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/1cf13a9a12a4a3fb21be/maintainability)](https://codeclimate.com/github/BRIGHTON-ASUMANI/politico2/maintainability)
 
+[![Test Coverage](https://api.codeclimate.com/v1/badges/1cf13a9a12a4a3fb21be/test_coverage)](https://codeclimate.com/github/BRIGHTON-ASUMANI/politico2/test_coverage)
 
 
 An application where users can be able to vote for politicians in a government office
