@@ -5,7 +5,7 @@ from flask import jsonify, make_response, request
 from app.api.version1 import v1
 from app.api.version1.models.party_models import Party, parties
 
-@v1.route('/parties', methods=['POST'])
+
 @v1.route('/parties', methods=['POST'])
 def create_party():
     party = request.get_json()
@@ -13,7 +13,7 @@ def create_party():
     hqAddress = party['hqAddress']
     logoUrl = party['logoUrl']
 
-
+    
     response = Party().create_party(name, hqAddress, logoUrl)
     return make_response(jsonify(response = {
         'message': 'Party added successfully',
