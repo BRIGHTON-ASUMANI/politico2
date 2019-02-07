@@ -8,7 +8,6 @@ def create_offices():
     office_type = ['type']
     office_name = ['name']
     
-
     new_office = {
         "type": office_type,
         "name": office_name
