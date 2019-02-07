@@ -17,3 +17,9 @@ def create_offices():
     return make_response(jsonify({
         'message': 'Office added successfully'
     }), 200)
+
+@v1.route('/offices', methods=['GET'])
+def get_all_offices():
+    
+    return Office.get_office()
+
