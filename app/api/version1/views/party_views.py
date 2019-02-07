@@ -1,9 +1,6 @@
 from flask import jsonify, make_response, request
 from app.api.version1 import v1
 from app.api.version1.models.party_models import Party, parties
-from flask import jsonify, make_response, request
-from app.api.version1 import v1
-from app.api.version1.models.party_models import Party, parties
 
 
 @v1.route('/parties', methods=['POST'])
