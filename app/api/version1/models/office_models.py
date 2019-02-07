@@ -21,8 +21,8 @@ class Office():
         
         new_office = {
             "office_id": len(self.all_offices)+1,
-            "name": office_name,
-            "type": office_type
+            "office_name": office_name,
+            "office_type": office_type
         }
 
         self.all_offices.append(new_office)

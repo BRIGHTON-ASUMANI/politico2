@@ -13,7 +13,7 @@ def create_office():
     office_type = office['type']
      
     response = Office().create_office(office_name, office_type)
-    return make_response(jsonify(response = {
+    return make_response(jsonify({
         'message': 'Office added successfully',
         'status': 201,
         'data': response
