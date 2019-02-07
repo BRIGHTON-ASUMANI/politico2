@@ -20,7 +20,6 @@ def create_parties():
         'message': 'Party added successfully'
     }), 200)
 
-
 @v1.route('/parties', methods=['GET'])
 def get_all_parties():
     res = Party.get_parties()
