@@ -64,7 +64,7 @@ def get_specific_id(party_id):
     }), 404)
 
 
-    @v1.route('/parties/<int:party_id>/<string:name>', methods=['PATCH'])
+    @v1.route('/parties/<int:party_id>/name', methods=['PATCH'])
     def edit_party(party_id):
         '''
         Edit political party endpoint'
@@ -77,7 +77,7 @@ def get_specific_id(party_id):
                 }), 400)
 
         return None
-        
+
 
         
 
