@@ -42,3 +42,5 @@ class Party():
                 if spec_party.get('party_id') == party_id:
 
                     return spec_party
+
+   
