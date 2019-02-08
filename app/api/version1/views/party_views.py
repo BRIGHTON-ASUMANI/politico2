@@ -75,7 +75,7 @@ def get_specific_id(party_id):
                 'message': ' invalid request',
                 'status': 400
                 }), 400)
-
+                
         return None
 
 
