@@ -32,6 +32,11 @@ class Party():
         return self.all_parties
 
     def get_specific_party(self, party_id):
+        '''
+         Args:
+            party_id: specific id of a party.
+            
+        '''
         if self.all_parties:
             for spec_party in self.all_parties:
                 if spec_party.get('party_id') == party_id:
