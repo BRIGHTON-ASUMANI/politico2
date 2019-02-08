@@ -10,11 +10,13 @@ def create_party():
     '''
     
     party = request.get_json()
+
     if not party:
         return make_response(jsonify({
             "message": "Your submission cannot be empty",
             "status": 400
         }), 400)
+
     elif len(party) != 3:
         return make_response(jsonify({
             "message": "You should have three fields while submitting",
@@ -23,10 +25,10 @@ def create_party():
 
     elif party['name'] is True:
         return make_response(jsonify({
-            "message": "You should have four fields while submitting",
+            "message": "Party name already exists",
             "status": 409
         }), 409)
-    
+           
     name = party.get('name')
     hqAddress = party.get('hqAddress')
     logoUrl = party.get('logoUrl')

@@ -9,6 +9,27 @@ def create_office():
     method for creating an office
     '''
     office = request.get_json()
+    
+    if not office:
+        return make_response(jsonify({
+            "message": "Your submission cannot be empty",
+            "status": 400
+        }), 400)
+
+    elif len(office) != 2:
+        return make_response(jsonify({
+            "message": "office should have two fields",
+            "status": 400
+        }), 400)
+
+    elif office['name'] is True:
+        return make_response(jsonify({
+            "message": "office name already exists",
+            "status": 409
+        }), 409)
+           
+
+  
     office_name = office['name']
     office_type = office['type']
      
