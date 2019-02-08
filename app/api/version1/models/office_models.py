@@ -1,18 +1,31 @@
-from flask import make_response, jsonify
+offices =[]
 
-all_offices =[]
-
-class Office:
+class Office():
+    '''
+    Class that generates new instances of an office
+    '''
     def __init__(self):
-        pass
+        self.all_offices = offices
+    '''
+    __init__ method that helps us define properties for our objects.
+    '''
+    def get_offices(self):
+        return self.all_offices
 
-    @staticmethod
-    def create_office(new_office):
-        return make_response(jsonify(all_offices))
+    def create_office(self, office_type, office_name):
+        '''
+         Args:
+            name: New office name.
+            type : New office type.
+        '''
+        
+        new_office = {
+            "office_id": len(self.all_offices)+1,
+            "office_name": office_name,
+            "office_type": office_type
+        }
 
-    @staticmethod
-    def get_office():
-        return make_response(jsonify(all_offices))
+        self.all_offices.append(new_office)
+        return self.all_offices
+        
 
-
-   
