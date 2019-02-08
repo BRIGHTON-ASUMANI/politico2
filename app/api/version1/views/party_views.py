@@ -22,13 +22,7 @@ def create_party():
             "message": "You should have three fields while submitting",
             "status": 400
         }), 400)
-
-    elif party['name'] is True:
-        return make_response(jsonify({
-            "message": "Party name already exists",
-            "status": 409
-        }), 409)
-           
+       
     name = party.get('name')
     hqAddress = party.get('hqAddress')
     logoUrl = party.get('logoUrl')
