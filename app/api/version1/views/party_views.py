@@ -64,5 +64,25 @@ def get_specific_id(party_id):
     }), 404)
 
 
+    @v1.route('/parties/<int:party_id>/<string:name>', methods=['PATCH'])
+    def edit_party(party_id):
+        '''
+        Edit political party endpoint'
+        '''
+        data_party=request.get_json()
+        if 'name' not in data_party or len(data_party) != 1:
+            return make_response(jsonify({
+                'message': ' invalid request',
+                'status': 400
+                }), 400)
+
+        return None
+        
+
+        
+
+    
+
+
 
 

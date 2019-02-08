@@ -6,7 +6,7 @@ from app.api.version1.models.office_models import Office, offices
 @v1.route('/offices', methods=['POST'])
 def create_office():
     '''
-    method for creating an office
+    endpoint for creating an office
     '''
     office = request.get_json()
     
@@ -43,7 +43,7 @@ def create_office():
 @v1.route('/offices', methods=['GET'])
 def get_all_offices():
     '''
-    method for getting all offfices
+    endpoint for getting all offfices
     '''
     all_offices = Office().get_offices()
     return make_response(jsonify({
@@ -56,7 +56,7 @@ def get_all_offices():
 @v1.route('/offices/<int:office_id>', methods=['GET'])
 def get_specific_office(office_id):
     '''
-    method for getting a specific office
+    endpoint for getting a specific office
     '''
     specific_office = Office().get_specific_office(office_id)
     if specific_office:
