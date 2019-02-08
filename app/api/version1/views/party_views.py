@@ -59,8 +59,8 @@ def get_specific_id(party_id):
             'parties': specific_party
         }), 200)
     return make_response(jsonify({
-        'error': 404,
-        'message': 'NOt found'
+        'status': 404,
+        'message': 'office doesn\'t exist'
     }), 404)
 
 
