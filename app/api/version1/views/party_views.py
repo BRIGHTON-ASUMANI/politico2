@@ -78,6 +78,13 @@ def get_specific_id(party_id):
                 
         return None
 
+    @v1.route('/parties/<int:party_id>', methods=['DELETE'])
+    def delete_a_party(self, party_id):
+        Party().delete_party(party_id)
+        return make_response(jsonify({
+            'status': 'OK',
+            'message': 'successfully deleted'
+        }), 200)
 
         
 
