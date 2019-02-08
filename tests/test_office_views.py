@@ -39,6 +39,7 @@ class TestOffice(unittest.TestCase):
         self.assertEqual(data['message'], 'Office added successfully')
         self.assertEqual(responses.status_code, 201)
 
+
     def test_get_offices(self):
         responses = self.client.post('/api/v1/offices', json = self.office)
         
