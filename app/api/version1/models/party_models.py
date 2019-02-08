@@ -30,3 +30,10 @@ class Party():
 
         self.all_parties.append(new_party)
         return self.all_parties
+
+    def get_specific_party(self, party_id):
+        if self.all_parties:
+            for spec_party in self.all_parties:
+                if spec_party.get('party_id') == party_id:
+
+                    return spec_party

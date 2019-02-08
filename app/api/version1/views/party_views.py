@@ -23,17 +23,15 @@ def create_party():
             "status": 400
         }), 400)
        
-    name = party.get('name')
-    hqAddress = party.get('hqAddress')
-    logoUrl = party.get('logoUrl')
+    name = party['name']
+    hqAddress = party['hqAddress']
+    logoUrl = party['logoUrl']
 
-
+    responses = Party().create_party(name, hqAddress, logoUrl)
     return make_response(jsonify({
         'message': 'Party added successfully',
         'status': 201,
-        'data': [{
-            "name":name
-        }]
+        'data': responses
     }), 201)
 
 @v1.route('/parties', methods=['GET'])
@@ -47,4 +45,24 @@ def get_all_parties():
         'status': 201,
         'data':all_parties
     }), 201)
+
+@v1.route('/parties/<int:party_id>', methods=['GET'])
+def get_specific_id(party_id):
+    '''
+    method for getting a specific party
+    '''
+    specific_party = Party().get_specific_party(party_id)
+    if specific_party:
+        return make_response(jsonify({
+            'message': 'success',
+            'Status': 200,
+            'parties': specific_party
+        }), 200)
+    return make_response(jsonify({
+        'error': 404,
+        'message': 'NOt found'
+    }), 404)
+
+
+
 
