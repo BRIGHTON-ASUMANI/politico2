@@ -1,6 +1,6 @@
 import unittest # Importing the unittest module
 import json
-from manage import app
+from app import create_app
 from app.api.version1.models.party_models import Party, parties # Importing the Office class
 
 
@@ -13,7 +13,7 @@ class TestParty(unittest.TestCase):
     '''
 
     def setUp(self):
-        self.app = app
+        self.app = create_app('testing')
         self.client = self.app.test_client()
         super().setUp()
         
