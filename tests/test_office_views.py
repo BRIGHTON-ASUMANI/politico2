@@ -1,6 +1,7 @@
 import unittest # Importing the unittest module
 import json
-from manage import app
+
+from app import create_app
 from app.api.version1.models.office_models import Office, offices # Importing the Office class
 
 
@@ -12,7 +13,7 @@ class TestOffice(unittest.TestCase):
         unittest.TestCase: TestCase class that helps in creating test cases
     '''
     def setUp(self):
-        self.app = app
+        self.app = create_app('testing')
         self.client = self.app.test_client()
         super().setUp()
         
