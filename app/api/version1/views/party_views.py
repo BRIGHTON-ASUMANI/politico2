@@ -64,31 +64,31 @@ def get_specific_id(party_id):
     }), 404)
 
 
-    @v1.route('/parties/<int:party_id>/name', methods=['PATCH'])
-    def edit_party(party_id):
-        '''
-        Edit political party endpoint'
-        '''
-        data_party=request.get_json()
-        if 'name' not in data_party or len(data_party) != 1:
-            return make_response(jsonify({
-                'message': ' invalid request',
-                'status': 400
-                }), 400)
-                
-        return None
-
-    @v1.route('/parties/<int:party_id>', methods=['DELETE'])
-    def delete_a_party(self, party_id):
-        Party().delete_party(party_id)
+@v1.route('/parties/<int:party_id>/name', methods=['PATCH'])
+def edit_party(party_id):
+    '''
+    Edit political party endpoint'
+    '''
+    data_party=request.get_json()
+    if 'name' not in data_party or len(data_party) != 1:
         return make_response(jsonify({
-            'status': 'OK',
-            'message': 'successfully deleted'
-        }), 200)
+            'message': ' invalid request',
+            'status': 400
+            }), 400)
+            
+    return None
 
-        
+@v1.route('/parties/<int:party_id>', methods=['DELETE'])
+def delete_a_party(party_id):
+    Party().delete_party(party_id)
+    return make_response(jsonify({
+        'status': 'OK',
+        'message': 'successfully deleted'
+    }), 200)
 
     
+
+
 
 
 
