@@ -17,11 +17,12 @@ class TestParty(unittest.TestCase):
         self.client = self.app.test_client()
         super().setUp()
         
-        self.office = {
+        self.party = {
             "name": "odm",
             "hqAddress": "nairobi",
             "logoUrl":"image"
         }
+
     
     def tearDown(self):
         '''
@@ -34,7 +35,7 @@ class TestParty(unittest.TestCase):
         '''
         method that tests create office.
         '''
-        responses = self.client.post('/api/v1/parties', json = self.office)
+        responses = self.client.post('/api/v1/parties', json = self.party)
         data = responses.get_json()
 
         self.assertEqual(data['status'], 201)
@@ -42,7 +43,12 @@ class TestParty(unittest.TestCase):
         self.assertEqual(responses.status_code, 201)
 
     def test_get_parties(self):
-        responses = self.client.post('/api/v1/parties', json = self.office)
+        '''
+        Tests to view all parties
+        '''
+        response = self.client.get(path='/api/v1/parties', content_type='application/json')
+        self.assertEqual(response.status_code, 201)
         
-        
+if __name__ == '__main__':
+    unittest.main()    
     

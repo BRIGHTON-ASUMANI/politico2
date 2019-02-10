@@ -9,7 +9,7 @@ def create_party():
     method for creating a party
     '''
     
-    party = request.get_json()
+    party = request.get_json(force=True)
 
     if not party:
         return make_response(jsonify({
