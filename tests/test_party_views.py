@@ -64,22 +64,19 @@ class TestParty(unittest.TestCase):
         
 
 
-    # def test_get_specific_party(self):
-    #     '''
-    #     method that tests create party.
-    #     '''
-    #     self.client.post('/api/v1/parties', json = self.party)
+    def test_edit_party(self):
+        '''
+        method that tests create party.
+        '''
+        self.client.post('/api/v1/parties', json = self.party)
         
-    #     responses = self.client.get('/api/v1/parties/1')
-    #     data = responses.get_json()
-    #     print(data)
-    #     self.assertEqual(data['status'], 200)
-    #     self.assertEqual(data['message'], 'success')
-    #     self.assertEqual(len(data['data']), 1)
-
-    #     self.assertEqual(data['data'][0]['party_id'], 1)
-
-    #     self.assertEqual(responses.status_code, 200)
+        responses = self.client.patch('/api/v1/parties/1/maendeleo')
+        data = responses.get_json()
+        
+        self.assertEqual(data['status'], 200)
+        self.assertEqual(data['message'], 'editted successful')
+        
+        self.assertEqual(responses.status_code, 200)
     
         
     

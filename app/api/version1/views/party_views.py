@@ -77,14 +77,14 @@ def edit_party(party_id, name):
             party['name'] = name
             parties[i] = party
             return make_response(jsonify({
-                'message': ' editted successful',
-                'status': 400
-                }), 400)
+                'message': 'editted successful',
+                'status': 200
+                }), 200)
             
     return make_response(jsonify({
                 'message': 'Party not found',
-                'status' : 409,
-                }), 400)
+                'status' : 404,
+                }), 404)
 
 @v1.route('/parties/<int:party_id>', methods=['DELETE'])
 def delete_a_party(party_id):
