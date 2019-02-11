@@ -21,14 +21,6 @@ def create_office():
             "message": "office should have two fields",
             "status": 400
         }), 400)
-
-    elif office['name'] is True:
-        return make_response(jsonify({
-            "message": "office name already exists",
-            "status": 409
-        }), 409)
-           
-
   
     office_name = office['name']
     office_type = office['type']

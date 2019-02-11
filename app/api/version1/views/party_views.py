@@ -47,20 +47,22 @@ def get_all_parties():
     }), 201)
 
 @v1.route('/parties/<int:party_id>', methods=['GET'])
-def get_specific_id(party_id):
+def get_specific_party(party_id):
     '''
     method for getting a specific party
     '''
+
     specific_party = Party().get_specific_party(party_id)
     if specific_party:
         return make_response(jsonify({
             'message': 'success',
-            'Status': 200,
-            'parties': specific_party
+            'status': 200,
+            'data': [specific_party]
         }), 200)
     return make_response(jsonify({
         'status': 404,
-        'message': 'office doesn\'t exist'
+        'message': 'office doesn\'t exist',
+        'data': []
     }), 404)
 
 
