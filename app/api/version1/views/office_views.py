@@ -55,11 +55,12 @@ def get_specific_office(office_id):
         return make_response(jsonify({
             'message': 'success',
             'status': 200,
-            'parties': specific_office
+            'data': [specific_office]
         }), 200)
     return make_response(jsonify({
         'status': 404,
-        'message': 'office not found'
+        'message': 'office not found',
+        'data': []
     }), 404)
 
 
