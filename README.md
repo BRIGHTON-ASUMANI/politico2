@@ -11,7 +11,7 @@ An application containing endpoints related to a voting system
 | api/v1/offices | POST and GET | Fetch and add offices |
 | api/v1/parties/int:party_id |  GET and DELETE  |   Get a single party and delete a single party |
 | api/v1/offices/int:office_id |  GET   |   Get a single office |
-| api/v2/parties/int:party_id/name | PATCH  | Edit a party |
+| api/v2/parties/int:party_id/string:name | PATCH  | Edit a party |
 
 ### __Technologies used__
 1. Flask python framework
