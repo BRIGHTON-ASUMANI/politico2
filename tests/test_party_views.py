@@ -62,8 +62,6 @@ class TestParty(unittest.TestCase):
         self.assertEqual(data['message'], 'All parties')
         
         
-
-
     def test_edit_party(self):
         '''
         method that tests create party.
@@ -76,6 +74,20 @@ class TestParty(unittest.TestCase):
         self.assertEqual(data['status'], 200)
         self.assertEqual(data['message'], 'editted successful')
         
+        self.assertEqual(responses.status_code, 200)
+
+    def test_delete_a_party(self):
+        '''
+        method that tests create party.
+        '''
+        self.client.post('/api/v1/parties', json = self.party)
+        
+        responses = self.client.delete('/api/v1/parties/1')
+        data = responses.get_json()
+        print(data)
+        self.assertEqual(data['status'], "OK")
+        self.assertEqual(data['message'], 'successfully deleted')
+       
         self.assertEqual(responses.status_code, 200)
     
         

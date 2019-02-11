@@ -39,7 +39,7 @@ def get_all_offices():
     '''
     all_offices = Office().get_offices()
     return make_response(jsonify({
-        'message': 'All Offices',
+        'message': 'All offices',
         'status': 200,
         'data':all_offices
     }), 200)
@@ -54,7 +54,7 @@ def get_specific_office(office_id):
     if specific_office:
         return make_response(jsonify({
             'message': 'success',
-            'Status': 200,
+            'status': 200,
             'parties': specific_office
         }), 200)
     return make_response(jsonify({
