@@ -1,4 +1,7 @@
-parties =[]
+parties ={
+    'party':[]
+}
+
 
 class Party():
     '''
@@ -23,13 +26,13 @@ class Party():
         
 
         new_party = {
-            "party_id": len(self.all_parties)+1,
+            "party_id": len(self.all_parties['party'])+1,
             "name": name,
             "hqAddress": hqAddress,
             "logoUrl": logoUrl
         }
 
-        self.all_parties.append(new_party)
+        self.all_parties['party'].append(new_party)
         return self.all_parties
 
     def get_specific_party(self, party_id):
@@ -38,14 +41,13 @@ class Party():
             party_id: specific id of a party.
             
         '''
-        
         if self.all_parties:
-            for spec_party in self.all_parties:
+            for spec_party in self.all_parties['party']:
                 if spec_party['party_id'] == party_id:
 
                     return spec_party
     def delete_party(self, party_id):
         for party in parties:
             if party['party_id'] == party_id:
-                parties.remove(party)
+                parties['party'].remove(party)
    
