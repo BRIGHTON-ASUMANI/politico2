@@ -15,8 +15,18 @@ An application containing endpoints related to a voting system
 
 ### __Technologies used__
 1. Flask python framework
-2. Travis for testing
+2. Travis CI for testing
 3. coverage
 4. python3.6
+5. Code climate
+6. JSON
 
 ### __Application functionality__
+> * As a user i should be able to do the following 
+    1. Parties can be created and fetched 
+    2. Offices can be created and fetched by the user
+    3. Get specific party
+    4. Get specific office
+    5  Delete a specific party
+    6. Edit a specific party
+
