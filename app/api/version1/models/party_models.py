@@ -20,6 +20,7 @@ class Party():
             hqAddress : New party hqAddress.
             logoUrl: New party logoUrl
         '''
+        
 
         new_party = {
             "party_id": len(self.all_parties)+1,
