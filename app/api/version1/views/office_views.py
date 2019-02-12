@@ -21,14 +21,6 @@ def create_office():
             "message": "office should have two fields",
             "status": 400
         }), 400)
-
-    elif office['name'] is True:
-        return make_response(jsonify({
-            "message": "office name already exists",
-            "status": 409
-        }), 409)
-           
-
   
     office_name = office['name']
     office_type = office['type']
@@ -47,7 +39,7 @@ def get_all_offices():
     '''
     all_offices = Office().get_offices()
     return make_response(jsonify({
-        'message': 'All Offices',
+        'message': 'All offices',
         'status': 200,
         'data':all_offices
     }), 200)
@@ -62,12 +54,13 @@ def get_specific_office(office_id):
     if specific_office:
         return make_response(jsonify({
             'message': 'success',
-            'Status': 200,
-            'parties': specific_office
+            'status': 200,
+            'data': [specific_office]
         }), 200)
     return make_response(jsonify({
         'status': 404,
-        'message': 'office not found'
+        'message': 'office not found',
+        'data': []
     }), 404)
 
 

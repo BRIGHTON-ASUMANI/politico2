@@ -20,6 +20,7 @@ class Party():
             hqAddress : New party hqAddress.
             logoUrl: New party logoUrl
         '''
+        
 
         new_party = {
             "party_id": len(self.all_parties)+1,
@@ -39,11 +40,11 @@ class Party():
         '''
         if self.all_parties:
             for spec_party in self.all_parties:
-                if spec_party.get('party_id') == party_id:
+                if spec_party['party_id'] == party_id:
 
                     return spec_party
     def delete_party(self, party_id):
         for party in parties:
-            if party['id'] == party_id:
+            if party['party_id'] == party_id:
                 parties.remove(party)
    

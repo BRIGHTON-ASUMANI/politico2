@@ -9,7 +9,7 @@ def create_party():
     method for creating a party
     '''
     
-    party = request.get_json()
+    party = request.get_json(force=True)
 
     if not party:
         return make_response(jsonify({
@@ -47,36 +47,44 @@ def get_all_parties():
     }), 201)
 
 @v1.route('/parties/<int:party_id>', methods=['GET'])
-def get_specific_id(party_id):
+def get_specific_party(party_id):
     '''
     method for getting a specific party
     '''
+
     specific_party = Party().get_specific_party(party_id)
     if specific_party:
         return make_response(jsonify({
             'message': 'success',
-            'Status': 200,
-            'parties': specific_party
+            'status': 200,
+            'data': [specific_party]
         }), 200)
     return make_response(jsonify({
         'status': 404,
-        'message': 'office doesn\'t exist'
+        'message': 'office doesn\'t exist',
+        'data': []
     }), 404)
 
 
-@v1.route('/parties/<int:party_id>/name', methods=['PATCH'])
-def edit_party(party_id):
+@v1.route('/parties/<int:party_id>/<string:name>', methods=['PATCH'])
+def edit_party(party_id, name):
     '''
     Edit political party endpoint'
     '''
-    data_party=request.get_json()
-    if 'name' not in data_party or len(data_party) != 1:
-        return make_response(jsonify({
-            'message': ' invalid request',
-            'status': 400
-            }), 400)
+    for i in range(len(parties)):
+        if parties[i]['party_id'] == party_id:
+            party = parties[i]
+            party['name'] = name
+            parties[i] = party
+            return make_response(jsonify({
+                'message': 'editted successful',
+                'status': 200
+                }), 200)
             
-    return None
+    return make_response(jsonify({
+                'message': 'Party not found',
+                'status' : 404,
+                }), 404)
 
 @v1.route('/parties/<int:party_id>', methods=['DELETE'])
 def delete_a_party(party_id):

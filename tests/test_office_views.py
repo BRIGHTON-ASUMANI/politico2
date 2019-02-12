@@ -31,7 +31,7 @@ class TestOffice(unittest.TestCase):
 
     def test_create_office(self):
         '''
-        method that tests create party.
+        method that tests create office.
         '''
         responses = self.client.post('/api/v1/offices', json = self.office)
         data = responses.get_json()
@@ -42,7 +42,38 @@ class TestOffice(unittest.TestCase):
 
 
     def test_get_offices(self):
-        responses = self.client.post('/api/v1/offices', json = self.office)
+        self.client.post('/api/v1/offices', json = self.office)
+        responses = self.client.get('/api/v1/offices')
+        data = responses.get_json()
+        self.assertEqual(data['status'], 200)
+        self.assertEqual(data['message'], 'All offices')
+
+
+    def test_get_specific_office(self):
+        '''
+        method that tests create office.
+        '''
+        self.client.post('/api/v1/offices', json = self.office)
+        
+        responses = self.client.get('/api/v1/offices/1')
+        data = responses.get_json()
+        self.assertEqual(data['status'], 200)
+        self.assertEqual(data['message'], 'success')
+        self.assertEqual(len(data['data']), 1)
+
+        self.assertEqual(data['data'][0]['office_id'], 1)
+
+        self.assertEqual(responses.status_code, 200)
+
+    def test_get_all_offices(self):
+        '''
+        tests for getting all offices
+        '''
+        self.client.post('/api/v1/offices', json = self.office)
+        responses = self.client.get('/api/v1/offices')
+        data = responses.get_json()
+        self.assertEqual(data['status'], 200)
+        self.assertEqual(data['message'], 'All offices')
         
         
     
