@@ -31,9 +31,10 @@ def create_party():
             "status": 400
         }), 400)
 
-    elif party != 3:
+
+    elif ((party['name'] == "") or (party['logoUrl'] == "")) or (party['hqAddress'] == "") :
         return make_response(jsonify({
-            "message": "You should have three fields while submitting",
+            "message": "You cannot pass in an empty string",
             "status": 400
         }), 400)
 

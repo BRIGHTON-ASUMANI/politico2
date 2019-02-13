@@ -24,12 +24,12 @@ An application containing endpoints related to a voting system
 
 ### __Application functionality__
 *As a user i should be able to do the following* 
-    1. Parties can be created and fetched 
-    2. Offices can be created and fetched by the user
-    3. Get specific party
-    4. Get specific office
-    5  Delete a specific party
-    6. Edit a specific party
+1. Parties can be created and fetched 
+2. Offices can be created and fetched by the user
+3. Get specific party
+4. Get specific office
+5  Delete a specific party
+6. Edit a specific party
 
 ### __Deployment__
 The application is hosted on [Heroku](https://politico2.herokuapp.com/api/) 
