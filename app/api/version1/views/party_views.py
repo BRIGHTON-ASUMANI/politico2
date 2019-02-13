@@ -1,3 +1,4 @@
+import validators
 from flask import jsonify, make_response, request
 from app.api.version1 import v1
 from app.api.version1.models.party_models import Party, parties
@@ -37,6 +38,24 @@ def create_party():
             "message": "You cannot pass in an empty string",
             "status": 400
         }), 400)
+
+    elif not party['name'].isalpha():
+        return make_response(jsonify({
+            "message": "A name cannot contain anything apart from letters",
+            "status": 400
+        }), 400)
+
+    elif not party['name'].isalpha():
+        return make_response(jsonify({
+            "message": "A name cannot contain anything apart from letters",
+            "status": 400
+        }), 400)
+    elif not validators.url(party['logoUrl']):
+        return make_response(jsonify({
+            "message": "That is not a valid url",
+            "status": 400
+        }), 400)
+
 
        
     name = party['name']
