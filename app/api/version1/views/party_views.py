@@ -3,13 +3,21 @@ from app.api.version1 import v1
 from app.api.version1.models.party_models import Party, parties
 
 
+@v1.route('/', methods=['GET', 'POST'])
+def index():
+    return make_response(jsonify({
+            "message": "Welcome to Politico",
+            "status": 200
+        }), 200)
+
+
 @v1.route('/parties', methods=['POST'])
 def create_party():
     '''
     method for creating a party
     '''
     
-    party = request.get_json(force=True)
+    party = request.get_json()
 
     if not party:
         return make_response(jsonify({
@@ -22,6 +30,13 @@ def create_party():
             "message": "You should have three fields while submitting",
             "status": 400
         }), 400)
+
+    elif party != 3:
+        return make_response(jsonify({
+            "message": "You should have three fields while submitting",
+            "status": 400
+        }), 400)
+
        
     name = party['name']
     hqAddress = party['hqAddress']
@@ -89,10 +104,16 @@ def edit_party(party_id, name):
 @v1.route('/parties/<int:party_id>', methods=['DELETE'])
 def delete_a_party(party_id):
     Party().delete_party(party_id)
+    if Party().delete_party(party_id):
+        return make_response(jsonify({
+            'status': 'OK',
+            'message': 'successfully deleted'
+        }), 200)
     return make_response(jsonify({
-        'status': 'OK',
-        'message': 'successfully deleted'
-    }), 200)
+            'status': 'not found',
+            'message': 'Party not found'
+        }), 404)
+    
 
     
 

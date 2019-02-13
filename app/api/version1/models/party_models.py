@@ -47,7 +47,7 @@ class Party():
 
                     return spec_party
     def delete_party(self, party_id):
-        for party in parties:
+        for party in parties['party']:
             if party['party_id'] == party_id:
                 parties['party'].remove(party)
    
