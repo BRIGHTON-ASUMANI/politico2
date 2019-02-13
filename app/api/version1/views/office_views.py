@@ -10,43 +10,7 @@ def create_office():
     '''
     office = request.get_json()
     
-    if not office:
-        return make_response(jsonify({
-            "message": "Your submission cannot be empty",
-            "status": 400
-        }), 400)
-
-    elif len(office) != 2:
-        return make_response(jsonify({
-            "message": "office should have two fields",
-            "status": 400
-        }), 400)
-
-    elif ((office['name'] == "") or (office['type'] == "")) :
-        return make_response(jsonify({
-            "message": "You cannot pass in an empty field",
-            "status": 400
-        }), 400)
-
-    elif not office['name'].isalpha():
-        return make_response(jsonify({
-            "message": "A name cannot contain anything apart from letters",
-            "status": 400
-        }), 400)
-
-    elif not office['type'].isalpha():
-        return make_response(jsonify({
-            "message": "A name cannot contain anything apart from letters",
-            "status": 400
-        }), 400)
-
-    elif not office['name']:
-        return make_response(jsonify({
-            "message": "You are passing in wrong fields",
-            "status": 400
-        }), 400)
     
-  
     office_name = office['name']
     office_type = office['type']
      

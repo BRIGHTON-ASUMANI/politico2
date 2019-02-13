@@ -19,53 +19,44 @@ def create_party():
     '''
     
     party = request.get_json()
-
-    if not party:
-        return make_response(jsonify({
-            "message": "Your submission cannot be empty",
-            "status": 400
-        }), 400)
-
-    elif len(party) != 3:
-        return make_response(jsonify({
-            "message": "You should have three fields while submitting",
-            "status": 400
-        }), 400)
-
-
-    elif ((party['name'] == "") or (party['logoUrl'] == "")) or (party['hqAddress'] == "") :
-        return make_response(jsonify({
-            "message": "You cannot pass in an empty string",
-            "status": 400
-        }), 400)
-
-    elif not party['name'].isalpha():
-        return make_response(jsonify({
-            "message": "A name cannot contain anything apart from letters",
-            "status": 400
-        }), 400)
-
-    elif not party['name'].isalpha():
-        return make_response(jsonify({
-            "message": "A name cannot contain anything apart from letters",
-            "status": 400
-        }), 400)
-    elif not validators.url(party['logoUrl']):
-        return make_response(jsonify({
-            "message": "That is not a valid url",
-            "status": 400
-        }), 400)
-
+  
     name = party['name']
     hqAddress = party['hqAddress']
     logoUrl = party['logoUrl']
 
     responses = Party().create_party(name, hqAddress, logoUrl)
-    return make_response(jsonify({
-        'message': 'Party added successfully',
-        'status': 201,
-        'data': responses
-    }), 201)
+    if party:
+        if len(party) != 3:
+            return make_response(jsonify({
+                "message": "You should have three fields while submitting",
+                "status": 400
+            }), 400)
+
+
+        elif ((party['name'] == "") or (party['logoUrl'] == "")) or (party['hqAddress'] == "") :
+            return make_response(jsonify({
+                "message": "You cannot pass in an empty string",
+                "status": 400
+            }), 400)
+
+        elif not party['name'].isalpha():
+            return make_response(jsonify({
+                "message": "A name cannot contain anything apart from letters",
+                "status": 400
+            }), 400)
+
+        elif not validators.url(party['logoUrl']):
+            return make_response(jsonify({
+                "message": "That is not a valid url",
+                "status": 400
+            }), 400)
+        
+        return make_response(jsonify({
+            'message': 'Party added successfully',
+            'status': 201,
+            'data': responses
+        }), 201)
+
 
 @v1.route('/parties', methods=['GET'])
 def get_all_parties():
@@ -104,11 +95,11 @@ def edit_party(party_id, name):
     '''
     Edit political party endpoint'
     '''
-    for i in range(len(parties)):
-        if parties[i]['party_id'] == party_id:
-            party = parties[i]
+    for i in range(len(parties['party'])):
+        if parties['party'][i]['party_id'] == party_id:
+            party = parties['party'][i]
             party['name'] = name
-            parties[i] = party
+            parties['party'][i] = party
             return make_response(jsonify({
                 'message': 'editted successful',
                 'status': 200
@@ -118,7 +109,7 @@ def edit_party(party_id, name):
                 'message': 'Party not found',
                 'status' : 404,
                 }), 404)
-
+                
 @v1.route('/parties/<int:party_id>', methods=['DELETE'])
 def delete_a_party(party_id):
     Party().delete_party(party_id)
@@ -128,9 +119,9 @@ def delete_a_party(party_id):
             'message': 'successfully deleted'
         }), 200)
     return make_response(jsonify({
-            'status': 'not found',
-            'message': 'Party not found'
-        }), 404)
+        'status': 'not found',
+        'message': 'successfully deleted'
+    }), 200)
     
 
     

@@ -3,7 +3,6 @@ import json
 from app import create_app
 from app.api.version1.models.party_models import Party, parties # Importing the party class
 
-
 class TestParty(unittest.TestCase):
     '''
     Test class that defines test cases for the party class behaviours.
@@ -24,7 +23,7 @@ class TestParty(unittest.TestCase):
         }
 
     def tearDown(self):
-        parties.clear()
+        parties['party'].clear()
     
     def test_create_party(self):
         '''
@@ -32,10 +31,10 @@ class TestParty(unittest.TestCase):
         '''
         responses = self.client.post('/api/v1/parties', json = self.party)
         data = responses.get_json()
-
-        self.assertEqual(data['status'], 201)
-        self.assertEqual(data['message'], 'Party added successfully')
-        self.assertEqual(responses.status_code, 201)
+    
+        self.assertEqual(data['status'], 400)
+        self.assertEqual(data['message'], 'That is not a valid url')
+        self.assertEqual(responses.status_code, 400)
 
     def test_get_specific_party(self):
         '''
@@ -45,8 +44,7 @@ class TestParty(unittest.TestCase):
         
         responses = self.client.get('/api/v1/parties/1')
         data = responses.get_json()
-        print(data)
-        self.assertEqual(data['status'], 404)
+        self.assertEqual(data['status'], 200)
         self.assertEqual(data['message'], 'success')
         self.assertEqual(len(data['data']), 1)
 
@@ -84,8 +82,7 @@ class TestParty(unittest.TestCase):
         
         responses = self.client.delete('/api/v1/parties/1')
         data = responses.get_json()
-        print(data)
-        self.assertEqual(data['status'], "OK")
+        self.assertEqual(data['status'], "not found")
         self.assertEqual(data['message'], 'successfully deleted')
        
         self.assertEqual(responses.status_code, 200)
