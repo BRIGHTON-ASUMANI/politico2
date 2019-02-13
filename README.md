@@ -7,6 +7,7 @@ An application containing endpoints related to a voting system
 ### __Endpoints__
 | Route   |      Methods      |  Endpont |
 |----------|:-------------:|------:|
+| api/v1/ | POST and GET | A default route for welcoming the user |
 | api/v1/parties | POST and GET | Fetch and add parties |
 | api/v1/offices | POST and GET | Fetch and add offices |
 | api/v1/parties/int:party_id |  GET and DELETE  |   Get a single party and delete a single party |
@@ -22,13 +23,16 @@ An application containing endpoints related to a voting system
 6. JSON
 
 ### __Application functionality__
-> * As a user i should be able to do the following 
+*As a user i should be able to do the following* 
     1. Parties can be created and fetched 
     2. Offices can be created and fetched by the user
     3. Get specific party
     4. Get specific office
     5  Delete a specific party
     6. Edit a specific party
+
+### __Deployment__
+The application is hosted on [Heroku](https://politico2.herokuapp.com/api/) 
 
 ### __Testing__
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://www.getpostman.com/run-collection/:collection_id)
