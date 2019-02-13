@@ -56,8 +56,6 @@ def create_party():
             "status": 400
         }), 400)
 
-
-       
     name = party['name']
     hqAddress = party['hqAddress']
     logoUrl = party['logoUrl']

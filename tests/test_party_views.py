@@ -46,7 +46,7 @@ class TestParty(unittest.TestCase):
         responses = self.client.get('/api/v1/parties/1')
         data = responses.get_json()
         print(data)
-        self.assertEqual(data['status'], 200)
+        self.assertEqual(data['status'], 404)
         self.assertEqual(data['message'], 'success')
         self.assertEqual(len(data['data']), 1)
 

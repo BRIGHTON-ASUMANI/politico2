@@ -56,7 +56,7 @@ class TestOffice(unittest.TestCase):
         self.client.post('/api/v1/offices', json = self.office)
         
         responses = self.client.get('/api/v1/offices/1')
-        data = responses.get_json()
+        data = responses.get_json()  
         self.assertEqual(data['status'], 200)
         self.assertEqual(data['message'], 'success')
         self.assertEqual(len(data['data']), 1)
