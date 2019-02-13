@@ -3,7 +3,6 @@ import json
 from app import create_app
 from app.api.version1.models.party_models import Party, parties # Importing the party class
 
-
 class TestParty(unittest.TestCase):
     '''
     Test class that defines test cases for the party class behaviours.
@@ -45,7 +44,6 @@ class TestParty(unittest.TestCase):
         
         responses = self.client.get('/api/v1/parties/1')
         data = responses.get_json()
-        print(data)
         self.assertEqual(data['status'], 404)
         self.assertEqual(data['message'], 'success')
         self.assertEqual(len(data['data']), 1)
@@ -84,7 +82,6 @@ class TestParty(unittest.TestCase):
         
         responses = self.client.delete('/api/v1/parties/1')
         data = responses.get_json()
-        print(data)
         self.assertEqual(data['status'], "OK")
         self.assertEqual(data['message'], 'successfully deleted')
        
