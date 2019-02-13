@@ -57,17 +57,17 @@ def create_party():
         }), 400)
 
 
-    elif party:   
-        name = party['name']
-        hqAddress = party['hqAddress']
-        logoUrl = party['logoUrl']
+       
+    name = party['name']
+    hqAddress = party['hqAddress']
+    logoUrl = party['logoUrl']
 
-        responses = Party().create_party(name, hqAddress, logoUrl)
-        return make_response(jsonify({
-            'message': 'Party added successfully',
-            'status': 201,
-            'data': responses
-        }), 201)
+    responses = Party().create_party(name, hqAddress, logoUrl)
+    return make_response(jsonify({
+        'message': 'Party added successfully',
+        'status': 201,
+        'data': responses
+    }), 201)
 
 @v1.route('/parties', methods=['GET'])
 def get_all_parties():
