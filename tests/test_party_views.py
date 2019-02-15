@@ -19,7 +19,7 @@ class TestParty(unittest.TestCase):
         self.party = {
             "name": "odm",
             "hqAddress": "nairobi",
-            "logoUrl":"www.image.com"
+            "logoUrl":"https://www.image.com"
         }
 
     def tearDown(self):

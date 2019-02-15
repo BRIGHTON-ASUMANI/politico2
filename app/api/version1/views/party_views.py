@@ -45,6 +45,12 @@ def create_party():
                 "status": 400
             }), 400)
 
+        elif party['name'] != str(party['name']) :
+            return make_response(jsonify({
+                "message": "input has to be a string",
+                "status": 400
+            }), 400)
+
         elif not party['name'].isalpha():
             return make_response(jsonify({
                 "message": "A name cannot contain anything apart from letters",
