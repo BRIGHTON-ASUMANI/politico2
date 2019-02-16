@@ -1,7 +1,18 @@
-import validators
+import re
 from flask import jsonify, make_response, request
 from app.api.version1 import v1
 from app.api.version1.models.party_models import Party, parties
+
+
+regex = re.compile(
+            r'^(?:http|ftp)s?://' # http:// or https://
+            r'(?:(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+(?:[A-Z]{2,6}\.?|[A-Z0-9-]{2,}\.?)|' #domain...
+            r'localhost|' #localhost...
+            r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})' # ...or ip
+            r'(?::\d+)?' # optional port
+            r'(?:/?|[/?]\S+)$', re.IGNORECASE)
+
+
 
 
 @v1.route('/', methods=['GET', 'POST'])
@@ -76,7 +87,7 @@ def create_party():
                 "status": 400
             }), 400)
 
-        elif not validators.url(party['logoUrl']):
+        elif not re.match(regex, party['logoUrl']):
             return make_response(jsonify({
                 "message": "That is not a valid url",
                 "status": 400
