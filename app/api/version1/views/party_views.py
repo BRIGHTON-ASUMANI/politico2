@@ -39,9 +39,34 @@ def create_party():
                 "status": 400
             }), 400)
 
+        elif party['name'] != str(party['name']) :
+            return make_response(jsonify({
+                "message": "input has to be a string",
+                "status": 400
+            }), 400)
+
         elif not party['name'].isalpha():
             return make_response(jsonify({
                 "message": "A name cannot contain anything apart from letters",
+                "status": 400
+            }), 400)
+
+        elif not party['name'] :
+            return make_response(jsonify({
+                "message": "You are missing name",
+                "status": 400
+            }), 400)
+
+
+        elif not party['hqAddress']:
+            return make_response(jsonify({
+                "message": "input has to be a hqAdress",
+                "status": 400
+            }), 400)
+
+        elif not party['logoUrl']:
+            return make_response(jsonify({
+                "message": "input has to be a logoUrl",
                 "status": 400
             }), 400)
 
@@ -56,6 +81,7 @@ def create_party():
             'status': 201,
             'data': responses
         }), 201)
+
 
 
 @v1.route('/parties', methods=['GET'])
@@ -85,7 +111,7 @@ def get_specific_party(party_id):
         }), 200)
     return make_response(jsonify({
         'status': 404,
-        'message': 'office doesn\'t exist',
+        'message': 'party doesn\'t exist',
         'data': []
     }), 404)
 
@@ -101,7 +127,7 @@ def edit_party(party_id, name):
             party['name'] = name
             parties['party'][i] = party
             return make_response(jsonify({
-                'message': 'editted successful',
+                'message': 'editted name successful',
                 'status': 200
                 }), 200)
             
@@ -110,6 +136,7 @@ def edit_party(party_id, name):
                 'status' : 404,
                 }), 404)
                 
+
 @v1.route('/parties/<int:party_id>', methods=['DELETE'])
 def delete_a_party(party_id):
     Party().delete_party(party_id)
@@ -118,10 +145,11 @@ def delete_a_party(party_id):
             'status': 'OK',
             'message': 'successfully deleted'
         }), 200)
-    return make_response(jsonify({
-        'status': 'not found',
-        'message': 'successfully deleted'
-    }), 200)
+    else:
+        return make_response(jsonify({
+            'status': 'ok',
+            'message': 'not found'
+        }), 404)
     
 
     
