@@ -15,6 +15,46 @@ def create_office():
     office_type = office['type']
      
     response = Office().create_office(office_name, office_type)
+    if office:
+        if len(office) != 3:
+            return make_response(jsonify({
+                "message": "You should have three fields while submitting",
+                "status": 400
+            }), 400)
+
+
+        elif ((office['name'] == "") or (office['type'] == "")):
+            return make_response(jsonify({
+                "message": "You cannot pass in an empty string",
+                "status": 400
+            }), 400)
+
+        elif office['name'] != str(office['name']) :
+            return make_response(jsonify({
+                "message": "input has to be a string",
+                "status": 400
+            }), 400)
+
+        elif not office['name'].isalpha():
+            return make_response(jsonify({
+                "message": "A name cannot contain anything apart from letters",
+                "status": 400
+            }), 400)
+
+        elif not office['name'] :
+            return make_response(jsonify({
+                "message": "You are missing name",
+                "status": 400
+            }), 400)
+
+
+        elif not office['type']:
+            return make_response(jsonify({
+                "message": "input has to be a hqAdress",
+                "status": 400
+            }), 400)
+
+
     return make_response(jsonify({
         'message': 'Office added successfully',
         'status': 201,
